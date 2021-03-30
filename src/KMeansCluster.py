@@ -187,5 +187,5 @@ class AlbertKMeansCluster(object):
         return input_ids, input_masks, segment_ids
 
 if __name__ =='__main__':
-    ak = AlbertKMeansCluster(small=True)
+    ak = AlbertKMeansCluster(small=False)
     ak.do_cluster()

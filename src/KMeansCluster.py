@@ -2,14 +2,12 @@ import os
 import sys
 
 from sklearn import metrics
-
 pwd = os.path.dirname(os.path.abspath("./"))
 sys.path.append(pwd)
 import h5py
 import tensorflow as tf
 from src.AlbertEncodeModel import AlbertEncodeModel, modeling
-from src.albert.classifier_utils import get_features_test, ClassifyProcessor, \
-    get_features_from_example, processor, get_features
+from src.albert.classifier_utils import get_features_test, ClassifyProcessor, get_features
 from src.albert.hyperparameters import Hyperparamters as hp
 import numpy as np
 from sklearn.cluster import KMeans

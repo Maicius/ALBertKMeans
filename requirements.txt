@@ -1,6 +1,9 @@
+tensorflow==1.14
 xlrd
 xlwt
+sklearn
 openpyxl
 pandas
 numpy
-tensorflow==1.14
+jieba
+h5py

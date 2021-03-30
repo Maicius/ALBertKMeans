@@ -1,5 +1,8 @@
 import os
 import sys
+
+from sklearn import metrics
+
 pwd = os.path.dirname(os.path.abspath("./"))
 sys.path.append(pwd)
 import h5py
@@ -128,9 +131,13 @@ class AlbertKMeansCluster(object):
         :return:
         """
         embeds_list = self.get_embedding_data()
-        res = KMeans(n_clusters=self.CLUSTER_NUM, random_state=9).fit_predict(embeds_list)
+        kmenas = KMeans(n_clusters=self.CLUSTER_NUM, random_state=9).fit(embeds_list)
+        res = kmenas.labels_
         df = pd.read_excel(self.data_file)
-
+        # 计算轮廓系数，用以评价聚类指标，越大越好
+        # https://blog.csdn.net/qq_27825451/article/details/94436488
+        score = metrics.silhouette_score(embeds_list, res)
+        print("聚类完成，评分：", score)
         df['label'] = res
         df.to_excel(self.ouput_data)
         word_cnt_df = self.get_word_count(df)

@@ -1,0 +1,6 @@
+xlrd
+xlwt
+openpyxl
+pandas
+numpy
+tensorflow==1.14
